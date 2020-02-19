@@ -10,6 +10,7 @@ const meetingsTableName = process.env.MEETINGS_TABLE_NAME;
 const attendeesTableName = process.env.ATTENDEES_TABLE_NAME;
 const sqsQueueArn = process.env.SQS_QUEUE_ARN;
 const provideQueueArn = process.env.USE_EVENT_BRIDGE === 'false';
+const logGroupName = process.env.BROWSER_LOG_GROUP_NAME;
 
 function uuid() {
   return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
@@ -194,17 +195,83 @@ exports.attendee = async(event, context, callback) => {
   callback(null, response);
 };
 
-exports.end = async(event, context, callback) => {
+async function ensureLogStream(cloudWatchClient, logStreamName) {
+  var describeLogStreamsParams = {
+    "logGroupName": logGroupName,
+    "logStreamNamePrefix": logStreamName
+  };
+  console.log("eLS 00000");
+  var response = await cloudWatchClient.describeLogStreams(describeLogStreamsParams).promise();
+  console.log("eLS 111111" + response);
+  var foundStream = response.logStreams.find(s => s.logStreamName === logStreamName);
+  console.log("eLS 22222 " + foundStream);
+  if (foundStream) {
+    console.log("eLS 33333 " + foundStream.uploadSequenceToken);
+
+    return foundStream.uploadSequenceToken;
+  }
+  return null;
+}
+
+exports.logs = async (event, context) => {
   var response = {
     "statusCode": 200,
     "headers": {},
     "body": '',
     "isBase64Encoded": false
   };
-  const title = event.queryStringParameters.title;
-  let meetingInfo = await getMeeting(title);
-  await chime.deleteMeeting({
-    MeetingId: meetingInfo.Meeting.MeetingId,
-  }).promise();
-  callback(null, response);
+  {
+    var body = JSON.parse(event.body);
+    if (!body.logs || !body.meetingId || !body.attendeeId || !body.appName) {
+      response.body = "Empty Parameters Received";
+      response.statusCode = 400;
+      return response;
+    }
+    console.log("11111");
+    console.log(body);
+    const logStreamName = "ChimeSDKMeeting_" + body.meetingId.toString();
+    var cloudWatchClient = new AWS.CloudWatchLogs({
+      apiVersion: '2014-03-28'
+    });
+    var uploadSequence = await ensureLogStream(cloudWatchClient, logStreamName);
+    console.log(uploadSequence + " 01010101" + uploadSequence);
+
+    var putLogEventsInput = {
+      "logGroupName": logGroupName,
+      "logStreamName": logStreamName
+    };
+    console.log(putLogEventsInput + " 22222" + uploadSequence);
+
+    if (uploadSequence) {
+      putLogEventsInput["sequenceToken"] = uploadSequence;
+    }
+    else{
+      var res = await cloudWatchClient.createLogStream(putLogEventsInput).promise();
+    }
+    console.log(logStreamName + " 333333333" + uploadSequence);
+
+    var logEvents = [];
+    for (let i = 0; i < body.logs.length; i++) {
+      var log = body.logs[i];
+      console.log(log.sequenceNumber);
+      var message = `${log.sequenceNumber} AttendeeID: ${body.attendeeId} [${log.logLevel}] ${log.message} ${log.timestampMs}`;
+      console.log(message);
+
+      logEvents.push({
+        "message": message,
+        "timestamp": log.timestampMs
+      });
+    }
+    console.log(message);
+
+    console.log(logStreamName + " 44444" + uploadSequence);
+
+
+    putLogEventsInput["logEvents"] = logEvents;
+    console.log(putLogEventsInput);
+
+
+    var res = await cloudWatchClient.putLogEvents(putLogEventsInput).promise();
+  }
+  return response;
 };

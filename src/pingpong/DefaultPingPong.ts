@@ -34,6 +34,10 @@ export default class DefaultPingPong implements SignalingClientObserver, PingPon
   ) {
     this.intervalScheduler = new IntervalScheduler(this.intervalMs);
     this.pingId = 0;
+    window.addEventListener('unload', () => {
+      this.intervalScheduler.stop();
+      this.signalingClient.removeObserver(this);
+    });
   }
 
   addObserver(observer: PingPongObserver): void {
@@ -68,8 +72,8 @@ export default class DefaultPingPong implements SignalingClientObserver, PingPon
   }
 
   stop(): void {
-    this.intervalScheduler.stop();
-    this.signalingClient.removeObserver(this);
+    //this.intervalScheduler.stop();
+    //this.signalingClient.removeObserver(this);
     this.pingId = 0;
     this.consecutivePongsUnaccountedFor = 0;
   }

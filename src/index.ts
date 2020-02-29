@@ -106,6 +106,7 @@ import FullJitterBackoff from './backoff/FullJitterBackoff';
 import FullJitterBackoffFactory from './backoff/FullJitterBackoffFactory';
 import FullJitterLimitedBackoff from './backoff/FullJitterLimitedBackoff';
 import GlobalMetricReport from './clientmetricreport/GlobalMetricReport';
+import IdleMonitor from './idlemonitor/IdleMonitor';
 import InitializeDefaultJPEGDecoderControllerTask from './task/InitializeDefaultJPEGDecoderControllerTask';
 import IntervalScheduler from './scheduler/IntervalScheduler';
 import JPEGDecoder from './jpegdecoder/webassembly/JPEGDecoder';
@@ -388,6 +389,7 @@ export {
   FullJitterBackoffFactory,
   FullJitterLimitedBackoff,
   GlobalMetricReport,
+  IdleMonitor,
   InitializeDefaultJPEGDecoderControllerTask,
   IntervalScheduler,
   JPEGDecoder,

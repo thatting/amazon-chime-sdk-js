@@ -78,6 +78,7 @@
 				<h3>Implements</h3>
 				<ul class="tsd-hierarchy">
 					<li><a href="../interfaces/reconnectcontroller.html" class="tsd-signature-type">ReconnectController</a></li>
+					<li><a href="../interfaces/pingpongobserver.html" class="tsd-signature-type">PingPongObserver</a></li>
 				</ul>
 			</section>
 			<section class="tsd-panel-group tsd-index-group">
@@ -97,9 +98,12 @@
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="defaultreconnectcontroller.html#backoffcancel" class="tsd-kind-icon">backoff<wbr>Cancel</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="defaultreconnectcontroller.html#backoffpolicy" class="tsd-kind-icon">backoff<wbr>Policy</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="defaultreconnectcontroller.html#backofftimer" class="tsd-kind-icon">backoff<wbr>Timer</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="defaultreconnectcontroller.html#canreceivepongs" class="tsd-kind-icon">can<wbr>Receive<wbr>Pongs</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="defaultreconnectcontroller.html#firstconnectionattempttimestamp" class="tsd-kind-icon">first<wbr>Connection<wbr>Attempt<wbr>Timestamp</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="defaultreconnectcontroller.html#firstconnectionattempted" class="tsd-kind-icon">first<wbr>Connection<wbr>Attempted</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="defaultreconnectcontroller.html#lastconnectionattempttimestamp" class="tsd-kind-icon">last<wbr>Connection<wbr>Attempt<wbr>Timestamp</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="defaultreconnectcontroller.html#onlyrestartpeerconnection" class="tsd-kind-icon">only<wbr>Restart<wbr>Peer<wbr>Connection</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="defaultreconnectcontroller.html#pingpong" class="tsd-kind-icon">ping<wbr>Pong</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="defaultreconnectcontroller.html#reconnecttimeoutms" class="tsd-kind-icon">reconnect<wbr>Timeout<wbr>Ms</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="defaultreconnectcontroller.html#shouldreconnect" class="tsd-kind-icon">should<wbr>Reconnect</a></li>
 							</ul>
@@ -109,6 +113,7 @@
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="defaultreconnectcontroller.html#cancel" class="tsd-kind-icon">cancel</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="defaultreconnectcontroller.html#clone" class="tsd-kind-icon">clone</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="defaultreconnectcontroller.html#didreceivepong" class="tsd-kind-icon">did<wbr>Receive<wbr>Pong</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="defaultreconnectcontroller.html#disablereconnect" class="tsd-kind-icon">disable<wbr>Reconnect</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="defaultreconnectcontroller.html#enablerestartpeerconnection" class="tsd-kind-icon">enable<wbr>Restart<wbr>Peer<wbr>Connection</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="defaultreconnectcontroller.html#haspastreconnectdeadline" class="tsd-kind-icon">has<wbr>Past<wbr>Reconnect<wbr>Deadline</a></li>
@@ -118,6 +123,7 @@
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="defaultreconnectcontroller.html#retrywithbackoff" class="tsd-kind-icon">retry<wbr>With<wbr>Backoff</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="defaultreconnectcontroller.html#shouldonlyrestartpeerconnection" class="tsd-kind-icon">should<wbr>Only<wbr>Restart<wbr>Peer<wbr>Connection</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="defaultreconnectcontroller.html#startedconnectionattempt" class="tsd-kind-icon">started<wbr>Connection<wbr>Attempt</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="defaultreconnectcontroller.html#timesincelastactivems" class="tsd-kind-icon">time<wbr>Since<wbr>Last<wbr>Active<wbr>Ms</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="defaultreconnectcontroller.html#timespentreconnectingms" class="tsd-kind-icon">time<wbr>Spent<wbr>Reconnecting<wbr>Ms</a></li>
 							</ul>
 						</section>
@@ -136,7 +142,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/aws/amazon-chime-sdk-js/blob/master/src/reconnectcontroller/DefaultReconnectController.ts#L15">src/reconnectcontroller/DefaultReconnectController.ts:15</a></li>
+									<li>Defined in <a href="https://github.com/aws/amazon-chime-sdk-js/blob/master/src/reconnectcontroller/DefaultReconnectController.ts#L20">src/reconnectcontroller/DefaultReconnectController.ts:20</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -161,7 +167,7 @@
 					<div class="tsd-signature tsd-kind-icon">_is<wbr>First<wbr>Connection<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol"> =&nbsp;true</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/aws/amazon-chime-sdk-js/blob/master/src/reconnectcontroller/DefaultReconnectController.ts#L13">src/reconnectcontroller/DefaultReconnectController.ts:13</a></li>
+							<li>Defined in <a href="https://github.com/aws/amazon-chime-sdk-js/blob/master/src/reconnectcontroller/DefaultReconnectController.ts#L17">src/reconnectcontroller/DefaultReconnectController.ts:17</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -171,7 +177,7 @@
 					<div class="tsd-signature tsd-kind-icon">backoff<wbr>Cancel<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;null</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/aws/amazon-chime-sdk-js/blob/master/src/reconnectcontroller/DefaultReconnectController.ts#L15">src/reconnectcontroller/DefaultReconnectController.ts:15</a></li>
+							<li>Defined in <a href="https://github.com/aws/amazon-chime-sdk-js/blob/master/src/reconnectcontroller/DefaultReconnectController.ts#L20">src/reconnectcontroller/DefaultReconnectController.ts:20</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -196,7 +202,7 @@
 					<div class="tsd-signature tsd-kind-icon">backoff<wbr>Policy<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">BackoffPolicy</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/aws/amazon-chime-sdk-js/blob/master/src/reconnectcontroller/DefaultReconnectController.ts#L17">src/reconnectcontroller/DefaultReconnectController.ts:17</a></li>
+							<li>Defined in <a href="https://github.com/aws/amazon-chime-sdk-js/blob/master/src/reconnectcontroller/DefaultReconnectController.ts#L22">src/reconnectcontroller/DefaultReconnectController.ts:22</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -204,6 +210,16 @@
 					<a name="backofftimer" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagPrivate">Private</span> backoff<wbr>Timer</h3>
 					<div class="tsd-signature tsd-kind-icon">backoff<wbr>Timer<span class="tsd-signature-symbol">:</span> <a href="timeoutscheduler.html" class="tsd-signature-type">TimeoutScheduler</a><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">null</span><span class="tsd-signature-symbol"> =&nbsp;null</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/aws/amazon-chime-sdk-js/blob/master/src/reconnectcontroller/DefaultReconnectController.ts#L19">src/reconnectcontroller/DefaultReconnectController.ts:19</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
+					<a name="canreceivepongs" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> can<wbr>Receive<wbr>Pongs</h3>
+					<div class="tsd-signature tsd-kind-icon">can<wbr>Receive<wbr>Pongs<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol"> =&nbsp;false</span></div>
 					<aside class="tsd-sources">
 						<ul>
 							<li>Defined in <a href="https://github.com/aws/amazon-chime-sdk-js/blob/master/src/reconnectcontroller/DefaultReconnectController.ts#L14">src/reconnectcontroller/DefaultReconnectController.ts:14</a></li>
@@ -216,7 +232,7 @@
 					<div class="tsd-signature tsd-kind-icon">first<wbr>Connection<wbr>Attempt<wbr>Timestamp<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> =&nbsp;0</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/aws/amazon-chime-sdk-js/blob/master/src/reconnectcontroller/DefaultReconnectController.ts#L12">src/reconnectcontroller/DefaultReconnectController.ts:12</a></li>
+							<li>Defined in <a href="https://github.com/aws/amazon-chime-sdk-js/blob/master/src/reconnectcontroller/DefaultReconnectController.ts#L15">src/reconnectcontroller/DefaultReconnectController.ts:15</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -226,7 +242,17 @@
 					<div class="tsd-signature tsd-kind-icon">first<wbr>Connection<wbr>Attempted<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol"> =&nbsp;false</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/aws/amazon-chime-sdk-js/blob/master/src/reconnectcontroller/DefaultReconnectController.ts#L11">src/reconnectcontroller/DefaultReconnectController.ts:11</a></li>
+							<li>Defined in <a href="https://github.com/aws/amazon-chime-sdk-js/blob/master/src/reconnectcontroller/DefaultReconnectController.ts#L13">src/reconnectcontroller/DefaultReconnectController.ts:13</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
+					<a name="lastconnectionattempttimestamp" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> last<wbr>Connection<wbr>Attempt<wbr>Timestamp</h3>
+					<div class="tsd-signature tsd-kind-icon">last<wbr>Connection<wbr>Attempt<wbr>Timestamp<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> =&nbsp;0</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/aws/amazon-chime-sdk-js/blob/master/src/reconnectcontroller/DefaultReconnectController.ts#L16">src/reconnectcontroller/DefaultReconnectController.ts:16</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -236,7 +262,17 @@
 					<div class="tsd-signature tsd-kind-icon">only<wbr>Restart<wbr>Peer<wbr>Connection<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol"> =&nbsp;false</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/aws/amazon-chime-sdk-js/blob/master/src/reconnectcontroller/DefaultReconnectController.ts#L10">src/reconnectcontroller/DefaultReconnectController.ts:10</a></li>
+							<li>Defined in <a href="https://github.com/aws/amazon-chime-sdk-js/blob/master/src/reconnectcontroller/DefaultReconnectController.ts#L12">src/reconnectcontroller/DefaultReconnectController.ts:12</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
+					<a name="pingpong" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> ping<wbr>Pong</h3>
+					<div class="tsd-signature tsd-kind-icon">ping<wbr>Pong<span class="tsd-signature-symbol">:</span> <a href="../interfaces/pingpong.html" class="tsd-signature-type">PingPong</a></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/aws/amazon-chime-sdk-js/blob/master/src/reconnectcontroller/DefaultReconnectController.ts#L18">src/reconnectcontroller/DefaultReconnectController.ts:18</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -246,7 +282,7 @@
 					<div class="tsd-signature tsd-kind-icon">reconnect<wbr>Timeout<wbr>Ms<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/aws/amazon-chime-sdk-js/blob/master/src/reconnectcontroller/DefaultReconnectController.ts#L17">src/reconnectcontroller/DefaultReconnectController.ts:17</a></li>
+							<li>Defined in <a href="https://github.com/aws/amazon-chime-sdk-js/blob/master/src/reconnectcontroller/DefaultReconnectController.ts#L22">src/reconnectcontroller/DefaultReconnectController.ts:22</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -256,7 +292,7 @@
 					<div class="tsd-signature tsd-kind-icon">should<wbr>Reconnect<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol"> =&nbsp;true</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/aws/amazon-chime-sdk-js/blob/master/src/reconnectcontroller/DefaultReconnectController.ts#L9">src/reconnectcontroller/DefaultReconnectController.ts:9</a></li>
+							<li>Defined in <a href="https://github.com/aws/amazon-chime-sdk-js/blob/master/src/reconnectcontroller/DefaultReconnectController.ts#L11">src/reconnectcontroller/DefaultReconnectController.ts:11</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -274,7 +310,7 @@
 							<aside class="tsd-sources">
 								<p>Implementation of <a href="../interfaces/reconnectcontroller.html">ReconnectController</a>.<a href="../interfaces/reconnectcontroller.html#cancel">cancel</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/aws/amazon-chime-sdk-js/blob/master/src/reconnectcontroller/DefaultReconnectController.ts#L65">src/reconnectcontroller/DefaultReconnectController.ts:65</a></li>
+									<li>Defined in <a href="https://github.com/aws/amazon-chime-sdk-js/blob/master/src/reconnectcontroller/DefaultReconnectController.ts#L93">src/reconnectcontroller/DefaultReconnectController.ts:93</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
@@ -292,10 +328,36 @@
 							<aside class="tsd-sources">
 								<p>Implementation of <a href="../interfaces/reconnectcontroller.html">ReconnectController</a>.<a href="../interfaces/reconnectcontroller.html#clone">clone</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/aws/amazon-chime-sdk-js/blob/master/src/reconnectcontroller/DefaultReconnectController.ts#L93">src/reconnectcontroller/DefaultReconnectController.ts:93</a></li>
+									<li>Defined in <a href="https://github.com/aws/amazon-chime-sdk-js/blob/master/src/reconnectcontroller/DefaultReconnectController.ts#L121">src/reconnectcontroller/DefaultReconnectController.ts:121</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <a href="defaultreconnectcontroller.html" class="tsd-signature-type">DefaultReconnectController</a></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="didreceivepong" class="tsd-anchor"></a>
+					<h3>did<wbr>Receive<wbr>Pong</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">did<wbr>Receive<wbr>Pong<span class="tsd-signature-symbol">(</span>_latencyMs<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, _clockSkewMs<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/aws/amazon-chime-sdk-js/blob/master/src/reconnectcontroller/DefaultReconnectController.ts#L47">src/reconnectcontroller/DefaultReconnectController.ts:47</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>_latencyMs: <span class="tsd-signature-type">number</span></h5>
+								</li>
+								<li>
+									<h5>_clockSkewMs: <span class="tsd-signature-type">number</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -310,7 +372,7 @@
 							<aside class="tsd-sources">
 								<p>Implementation of <a href="../interfaces/reconnectcontroller.html">ReconnectController</a>.<a href="../interfaces/reconnectcontroller.html#disablereconnect">disableReconnect</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/aws/amazon-chime-sdk-js/blob/master/src/reconnectcontroller/DefaultReconnectController.ts#L57">src/reconnectcontroller/DefaultReconnectController.ts:57</a></li>
+									<li>Defined in <a href="https://github.com/aws/amazon-chime-sdk-js/blob/master/src/reconnectcontroller/DefaultReconnectController.ts#L85">src/reconnectcontroller/DefaultReconnectController.ts:85</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
@@ -328,7 +390,7 @@
 							<aside class="tsd-sources">
 								<p>Implementation of <a href="../interfaces/reconnectcontroller.html">ReconnectController</a>.<a href="../interfaces/reconnectcontroller.html#enablerestartpeerconnection">enableRestartPeerConnection</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/aws/amazon-chime-sdk-js/blob/master/src/reconnectcontroller/DefaultReconnectController.ts#L61">src/reconnectcontroller/DefaultReconnectController.ts:61</a></li>
+									<li>Defined in <a href="https://github.com/aws/amazon-chime-sdk-js/blob/master/src/reconnectcontroller/DefaultReconnectController.ts#L89">src/reconnectcontroller/DefaultReconnectController.ts:89</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
@@ -345,7 +407,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/aws/amazon-chime-sdk-js/blob/master/src/reconnectcontroller/DefaultReconnectController.ts#L28">src/reconnectcontroller/DefaultReconnectController.ts:28</a></li>
+									<li>Defined in <a href="https://github.com/aws/amazon-chime-sdk-js/blob/master/src/reconnectcontroller/DefaultReconnectController.ts#L40">src/reconnectcontroller/DefaultReconnectController.ts:40</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
@@ -363,7 +425,7 @@
 							<aside class="tsd-sources">
 								<p>Implementation of <a href="../interfaces/reconnectcontroller.html">ReconnectController</a>.<a href="../interfaces/reconnectcontroller.html#hasstartedconnectionattempt">hasStartedConnectionAttempt</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/aws/amazon-chime-sdk-js/blob/master/src/reconnectcontroller/DefaultReconnectController.ts#L49">src/reconnectcontroller/DefaultReconnectController.ts:49</a></li>
+									<li>Defined in <a href="https://github.com/aws/amazon-chime-sdk-js/blob/master/src/reconnectcontroller/DefaultReconnectController.ts#L77">src/reconnectcontroller/DefaultReconnectController.ts:77</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
@@ -381,7 +443,7 @@
 							<aside class="tsd-sources">
 								<p>Implementation of <a href="../interfaces/reconnectcontroller.html">ReconnectController</a>.<a href="../interfaces/reconnectcontroller.html#isfirstconnection">isFirstConnection</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/aws/amazon-chime-sdk-js/blob/master/src/reconnectcontroller/DefaultReconnectController.ts#L53">src/reconnectcontroller/DefaultReconnectController.ts:53</a></li>
+									<li>Defined in <a href="https://github.com/aws/amazon-chime-sdk-js/blob/master/src/reconnectcontroller/DefaultReconnectController.ts#L81">src/reconnectcontroller/DefaultReconnectController.ts:81</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
@@ -399,7 +461,7 @@
 							<aside class="tsd-sources">
 								<p>Implementation of <a href="../interfaces/reconnectcontroller.html">ReconnectController</a>.<a href="../interfaces/reconnectcontroller.html#reset">reset</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/aws/amazon-chime-sdk-js/blob/master/src/reconnectcontroller/DefaultReconnectController.ts#L32">src/reconnectcontroller/DefaultReconnectController.ts:32</a></li>
+									<li>Defined in <a href="https://github.com/aws/amazon-chime-sdk-js/blob/master/src/reconnectcontroller/DefaultReconnectController.ts#L52">src/reconnectcontroller/DefaultReconnectController.ts:52</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
@@ -416,7 +478,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/aws/amazon-chime-sdk-js/blob/master/src/reconnectcontroller/DefaultReconnectController.ts#L76">src/reconnectcontroller/DefaultReconnectController.ts:76</a></li>
+									<li>Defined in <a href="https://github.com/aws/amazon-chime-sdk-js/blob/master/src/reconnectcontroller/DefaultReconnectController.ts#L104">src/reconnectcontroller/DefaultReconnectController.ts:104</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -467,7 +529,7 @@
 							<aside class="tsd-sources">
 								<p>Implementation of <a href="../interfaces/reconnectcontroller.html">ReconnectController</a>.<a href="../interfaces/reconnectcontroller.html#shouldonlyrestartpeerconnection">shouldOnlyRestartPeerConnection</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/aws/amazon-chime-sdk-js/blob/master/src/reconnectcontroller/DefaultReconnectController.ts#L89">src/reconnectcontroller/DefaultReconnectController.ts:89</a></li>
+									<li>Defined in <a href="https://github.com/aws/amazon-chime-sdk-js/blob/master/src/reconnectcontroller/DefaultReconnectController.ts#L117">src/reconnectcontroller/DefaultReconnectController.ts:117</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
@@ -478,14 +540,14 @@
 					<a name="startedconnectionattempt" class="tsd-anchor"></a>
 					<h3>started<wbr>Connection<wbr>Attempt</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">started<wbr>Connection<wbr>Attempt<span class="tsd-signature-symbol">(</span>isFirstConnection<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+						<li class="tsd-signature tsd-kind-icon">started<wbr>Connection<wbr>Attempt<span class="tsd-signature-symbol">(</span>isFirstConnection<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span>, pingPong<span class="tsd-signature-symbol">: </span><a href="../interfaces/pingpong.html" class="tsd-signature-type">PingPong</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<p>Implementation of <a href="../interfaces/reconnectcontroller.html">ReconnectController</a>.<a href="../interfaces/reconnectcontroller.html#startedconnectionattempt">startedConnectionAttempt</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/aws/amazon-chime-sdk-js/blob/master/src/reconnectcontroller/DefaultReconnectController.ts#L41">src/reconnectcontroller/DefaultReconnectController.ts:41</a></li>
+									<li>Defined in <a href="https://github.com/aws/amazon-chime-sdk-js/blob/master/src/reconnectcontroller/DefaultReconnectController.ts#L66">src/reconnectcontroller/DefaultReconnectController.ts:66</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -493,8 +555,28 @@
 								<li>
 									<h5>isFirstConnection: <span class="tsd-signature-type">boolean</span></h5>
 								</li>
+								<li>
+									<h5>pingPong: <a href="../interfaces/pingpong.html" class="tsd-signature-type">PingPong</a></h5>
+								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-private">
+					<a name="timesincelastactivems" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> time<wbr>Since<wbr>Last<wbr>Active<wbr>Ms</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-private">
+						<li class="tsd-signature tsd-kind-icon">time<wbr>Since<wbr>Last<wbr>Active<wbr>Ms<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/aws/amazon-chime-sdk-js/blob/master/src/reconnectcontroller/DefaultReconnectController.ts#L33">src/reconnectcontroller/DefaultReconnectController.ts:33</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -508,7 +590,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/aws/amazon-chime-sdk-js/blob/master/src/reconnectcontroller/DefaultReconnectController.ts#L21">src/reconnectcontroller/DefaultReconnectController.ts:21</a></li>
+									<li>Defined in <a href="https://github.com/aws/amazon-chime-sdk-js/blob/master/src/reconnectcontroller/DefaultReconnectController.ts#L26">src/reconnectcontroller/DefaultReconnectController.ts:26</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span></h4>
@@ -548,13 +630,22 @@
 								<a href="defaultreconnectcontroller.html#backofftimer" class="tsd-kind-icon">backoff<wbr>Timer</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
+								<a href="defaultreconnectcontroller.html#canreceivepongs" class="tsd-kind-icon">can<wbr>Receive<wbr>Pongs</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
 								<a href="defaultreconnectcontroller.html#firstconnectionattempttimestamp" class="tsd-kind-icon">first<wbr>Connection<wbr>Attempt<wbr>Timestamp</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
 								<a href="defaultreconnectcontroller.html#firstconnectionattempted" class="tsd-kind-icon">first<wbr>Connection<wbr>Attempted</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
+								<a href="defaultreconnectcontroller.html#lastconnectionattempttimestamp" class="tsd-kind-icon">last<wbr>Connection<wbr>Attempt<wbr>Timestamp</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
 								<a href="defaultreconnectcontroller.html#onlyrestartpeerconnection" class="tsd-kind-icon">only<wbr>Restart<wbr>Peer<wbr>Connection</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
+								<a href="defaultreconnectcontroller.html#pingpong" class="tsd-kind-icon">ping<wbr>Pong</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
 								<a href="defaultreconnectcontroller.html#reconnecttimeoutms" class="tsd-kind-icon">reconnect<wbr>Timeout<wbr>Ms</a>
@@ -567,6 +658,9 @@
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="defaultreconnectcontroller.html#clone" class="tsd-kind-icon">clone</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="defaultreconnectcontroller.html#didreceivepong" class="tsd-kind-icon">did<wbr>Receive<wbr>Pong</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="defaultreconnectcontroller.html#disablereconnect" class="tsd-kind-icon">disable<wbr>Reconnect</a>
@@ -594,6 +688,9 @@
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="defaultreconnectcontroller.html#startedconnectionattempt" class="tsd-kind-icon">started<wbr>Connection<wbr>Attempt</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private">
+								<a href="defaultreconnectcontroller.html#timesincelastactivems" class="tsd-kind-icon">time<wbr>Since<wbr>Last<wbr>Active<wbr>Ms</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private">
 								<a href="defaultreconnectcontroller.html#timespentreconnectingms" class="tsd-kind-icon">time<wbr>Spent<wbr>Reconnecting<wbr>Ms</a>

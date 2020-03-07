@@ -117,6 +117,7 @@ import JPEGDecoderModule from './jpegdecoder/webassembly/JPEGDecoderModule';
 import JoinAndReceiveIndexTask from './task/JoinAndReceiveIndexTask';
 import LeaveAndReceiveLeaveAckTask from './task/LeaveAndReceiveLeaveAckTask';
 import ListenForVolumeIndicatorsTask from './task/ListenForVolumeIndicatorsTask';
+import LogBody from './logger/LogBody';
 import LogLevel from './logger/LogLevel';
 import Logger from './logger/Logger';
 import Maybe from './maybe/Maybe';
@@ -126,11 +127,13 @@ import MediaRecordingEvent from './mediarecording/MediaRecordingEvent';
 import MediaRecordingFactory from './mediarecording/MediaRecordingFactory';
 import MediaRecordingOptions from './mediarecording/MediaRecordingOptions';
 import MediaStreamBroker from './mediastreambroker/MediaStreamBroker';
+import MeetingLog from './logger/MeetingLog';
 import MeetingSession from './meetingsession/MeetingSession';
 import MeetingSessionConfiguration from './meetingsession/MeetingSessionConfiguration';
 import MeetingSessionCredentials from './meetingsession/MeetingSessionCredentials';
 import MeetingSessionLifecycleEvent from './meetingsession/MeetingSessionLifecycleEvent';
 import MeetingSessionLifecycleEventCondition from './meetingsession/MeetingSessionLifecycleEventCondition';
+import MeetingSessionPOSTLogger from './logger/MeetingSessionPOSTLogger';
 import MeetingSessionStatus from './meetingsession/MeetingSessionStatus';
 import MeetingSessionStatusCode from './meetingsession/MeetingSessionStatusCode';
 import MeetingSessionTURNCredentials from './meetingsession/MeetingSessionTURNCredentials';
@@ -399,6 +402,7 @@ export {
   JoinAndReceiveIndexTask,
   LeaveAndReceiveLeaveAckTask,
   ListenForVolumeIndicatorsTask,
+  LogBody,
   LogLevel,
   Logger,
   Maybe,
@@ -408,11 +412,13 @@ export {
   MediaRecordingFactory,
   MediaRecordingOptions,
   MediaStreamBroker,
+  MeetingLog,
   MeetingSession,
   MeetingSessionConfiguration,
   MeetingSessionCredentials,
   MeetingSessionLifecycleEvent,
   MeetingSessionLifecycleEventCondition,
+  MeetingSessionPOSTLogger,
   MeetingSessionStatus,
   MeetingSessionStatusCode,
   MeetingSessionTURNCredentials,

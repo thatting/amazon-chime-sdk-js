@@ -1,4 +1,4 @@
-// Copyright 2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+// Copyright 2019-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 // SPDX-License-Identifier: Apache-2.0
 
 export default class DOMMockBehavior {
@@ -47,4 +47,5 @@ export default class DOMMockBehavior {
 
   browserName: string = 'firefox';
   fetchSucceeds: boolean = true;
+  responseSuccess: boolean = true;
 }

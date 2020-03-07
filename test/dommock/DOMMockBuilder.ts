@@ -725,6 +725,13 @@ export default class DOMMockBuilder {
       json(): Promise<any> {
         return mockBehavior.FakeTURNCredentialsBody;
       }
+      get status(): number {
+        if (mockBehavior.responseSuccess) {
+          return 200;
+        } else {
+          return 500;
+        }
+      }
     };
 
     GlobalAny.fetch = function fetch(_input: RequestInfo, _init?: RequestInit): Promise<Response> {
